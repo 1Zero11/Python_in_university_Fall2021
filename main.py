@@ -4,7 +4,7 @@ def f():
     print((val % 100)//10)
 
 # M
-def f():
+def m():
     name = input()
     print("Hello, ", name, "!", sep="")
 
