@@ -50,5 +50,37 @@ def r():
     amount = int(input())
     print(a*amount+b*amount//100, b*amount%100)
 
+#E
+def e():
+    x1 = int(input())
+    y1 = int(input())
+    x2 = int(input())
+    y2 = int(input())
+
+    if x1>0 and y1>0 and x2>0 and y2>0:
+        print('YES')
+    elif x1>0 and y1<0 and x2>0 and y2<0:
+        print('YES')
+    elif x1<0 and y1>0 and x2<0 and y2>0:
+        print('YES')
+    elif x1<0 and y1<0 and x2<0 and y2<0:
+        print('YES')
+    else:
+        print('NO')
+
+#G
+def g():
+    x1 = int(input())
+    y1 = int(input())
+    x2 = int(input())
+    y2 = int(input())
+
+    if abs(x2-x1)<=1 and abs(y2-y1)<=1:
+        print('YES')
+    else:
+        print('NO')
+
+
+
 if __name__ == "__main__":
-    r()
+    g()
