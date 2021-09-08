@@ -46,7 +46,7 @@ def apriori(korz, items, n):
         if supp(korz, item)>=min_supp:
             out.append(item)
 
-    print(out)
+    #print(out)
     if len(out) == 0:
         return []
 
@@ -54,7 +54,7 @@ def apriori(korz, items, n):
     for item in out:
         all = merge(all, item)
 
-    print(set(itertools.combinations(all, n+1)))
+    #print(set(itertools.combinations(all, n+1)))
     out += apriori(korz, set(itertools.combinations(all, n+1)), n+1)
 
     return out
@@ -81,5 +81,14 @@ for items in korzina:
     all = merge(all, items)
 
 print(get_me_results(korzina, apriori(korzina, all,1)))
+
+'''
+Что-то я переборщил с кодом, он ещё на з буквы посчитал 2 раза одно и то же, ну ладно, я тут исправил
+
+0.75
+0.75
+[(['B', 'A'], 1.0), (['A', 'B'], 1.0), (['D', 'B'], 1.0), (['D', 'A'], 1.0), (['D', 'A', 'B'], 1.0)]
+
+'''
 
 
