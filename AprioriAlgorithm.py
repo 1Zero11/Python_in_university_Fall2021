@@ -60,15 +60,16 @@ def apriori(korz, items, n):
     return out
 
 def get_me_results(korz, ap):
-    results = []
+    results = {}
     for it in ap:
         if isinstance(it, tuple):
             for item in set(itertools.permutations(it)):
                 item = list(item)
                 # print(conf(korz, item[0], set(item[1:])))
-                conff = conf(korz, item[0], set(item[1:]))
-                if conff>min_conf:
-                    results.append((item, conff))
+                for i in range(1,len(item)):
+                    conff = conf(korz, set(item[:i]), set(item[i:]))
+                    if conff>min_conf:
+                        results[(tuple(item[:i]), tuple(item[i:]))] = conff
 
     return results
 
@@ -83,11 +84,13 @@ for items in korzina:
 print(get_me_results(korzina, apriori(korzina, all,1)))
 
 '''
-Что-то я переборщил с кодом, он ещё на з буквы посчитал 2 раза одно и то же, ну ладно, я тут исправил
+Сделал нормально. Всё ещё повторяется, но теперь всё выдаёт
 
 0.75
 0.75
-[(['B', 'A'], 1.0), (['A', 'B'], 1.0), (['D', 'B'], 1.0), (['D', 'A'], 1.0), (['D', 'A', 'B'], 1.0)]
+{(('B',), ('A',)): 1.0, (('A',), ('B',)): 1.0, (('D',), ('B',)): 1.0, (('D',), ('A',)): 1.0, (('D',), ('A', 'B')): 1.0, (('D', 'A'), ('B',)): 1.0, (('A', 'D'), ('B',)
+): 1.0, (('D',), ('B', 'A')): 1.0, (('D', 'B'), ('A',)): 1.0, (('B', 'D'), ('A',)): 1.0}
+
 
 '''
 
